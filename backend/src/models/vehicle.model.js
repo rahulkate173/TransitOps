@@ -4,7 +4,7 @@ const vehicleSchema = new mongoose.Schema(
   {
     registrationNumber: {
       type: String,
-      required: true,
+      required: [true, "Registration number is required"],
       unique: true,
       trim: true,
       uppercase: true,
@@ -12,36 +12,44 @@ const vehicleSchema = new mongoose.Schema(
 
     vehicleName: {
       type: String,
-      required: true,
+      required: [true, "Vehicle name is required"],
       trim: true,
     },
 
     type: {
       type: String,
-      enum: ["Van", "Truck", "Mini Truck", "Bus", "Car"],
-      required: true,
+      enum: {
+        values: ["Van", "Truck", "Mini Truck", "Bus", "Car"],
+        message: "Type must be one of: Van, Truck, Mini Truck, Bus, Car",
+      },
+      required: [true, "Vehicle type is required"],
     },
 
     maxLoadCapacity: {
       type: Number,
-      required: true,
+      required: [true, "Max load capacity is required"],
+      min: [1, "Max load capacity must be greater than 0"],
     },
 
     capacityUnit: {
       type: String,
-      enum: ["kg", "ton"],
+      enum: {
+        values: ["kg", "ton"],
+        message: "Capacity unit must be kg or ton",
+      },
       default: "kg",
     },
 
     odometer: {
       type: Number,
-      required: true,
       default: 0,
+      min: [0, "Odometer cannot be negative"],
     },
 
     acquisitionCost: {
       type: Number,
-      required: true,
+      required: [true, "Acquisition cost is required"],
+      min: [0, "Acquisition cost cannot be negative"],
     },
 
     manufactureYear: {
@@ -50,12 +58,18 @@ const vehicleSchema = new mongoose.Schema(
 
     fuelType: {
       type: String,
-      enum: ["Diesel", "Petrol", "CNG", "Electric"],
+      enum: {
+        values: ["Diesel", "Petrol", "CNG", "Electric"],
+        message: "Fuel type must be one of: Diesel, Petrol, CNG, Electric",
+      },
     },
 
     status: {
       type: String,
-      enum: ["Available", "On Trip", "In Shop", "Retired"],
+      enum: {
+        values: ["Available", "On Trip", "In Shop", "Retired"],
+        message: "Status must be one of: Available, On Trip, In Shop, Retired",
+      },
       default: "Available",
     },
 
@@ -71,4 +85,3 @@ const vehicleSchema = new mongoose.Schema(
 );
 
 export default mongoose.model("Vehicle", vehicleSchema);
-
