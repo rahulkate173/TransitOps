@@ -1,7 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 
-// Pages
+import LandingPage from "./features/auth/pages/LandingPage";
+
 import AuthPage from "./features/auth/pages/AuthPage";
 import VehicleRegistry from "./features/vehicleRegistry/pages/VehicleRegistry";
 import DriversPage from "./features/drivers/pages/DriversPage";
@@ -41,7 +42,13 @@ const AppShell = ({ children }) => {
 const App = () => {
     return (
         <Routes>
+
             {/* ── Public ──────────────────────────────────────── */}
+            {/* Landing Page */}
+            <Route path="/" element={<LandingPage />} />
+
+            {/* Auth */}
+
             <Route path="/auth" element={<AuthPage />} />
 
             {/* ── Protected: Fleet ────────────────────────────── */}
@@ -125,8 +132,10 @@ const App = () => {
             } />
 
             {/* ── Defaults ────────────────────────────────────── */}
-            <Route path="/" element={<Navigate to="/auth" replace />} />
             <Route path="*" element={<Navigate to="/fleet" replace />} />
+
+            {/* Catch-all */}
+
         </Routes>
     );
 };
