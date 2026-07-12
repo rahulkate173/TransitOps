@@ -1,0 +1,461 @@
+/* ═══════════════════════════════════════════════════════════════
+   TransitOps Auth Styles
+   Palette:
+     --gold:        #B8860B  (dark goldenrod)
+     --gold-light:  #D4A017
+     --gold-hover:  #C8961C
+     --bg-dark:     #111111
+     --bg-panel:    #1A1A1A
+     --bg-input:    #222222
+     --bg-left:     #E8E4DC
+     --text-primary:#F0EDE8
+     --text-muted:  #8A8A8A
+     --border:      #333333
+     --error:       #C0392B
+     --success:     #27AE60
+═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Courier+Prime:wght@400;700&display=swap');
+
+/* ─── Layout ─────────────────────────────────────────────────── */
+.auth-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ─── Left Panel ─────────────────────────────────────────────── */
+.auth-left {
+    width: 42%;
+    background-color: #e7dcc6;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 52px;
+    position: relative;
+}
+
+.auth-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: auto;
+}
+
+.auth-logo-icon {
+    width: 52px;
+    height: 52px;
+    background: #B8860B;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 3px;
+    padding: 8px;
+}
+
+.auth-logo-icon span {
+    background: #E8E4DC;
+    border-radius: 1px;
+    opacity: 0.9;
+}
+
+.auth-logo-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: -0.5px;
+    margin-top: 4px;
+}
+
+.auth-logo-subtitle {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12.5px;
+    color: #666;
+    letter-spacing: 0.2px;
+}
+
+.auth-roles {
+    margin-top: auto;
+    padding-top: 60px;
+}
+
+.auth-roles-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 14px;
+}
+
+.auth-roles-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-roles-list li {
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-roles-list li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #B8860B;
+    flex-shrink: 0;
+}
+
+.auth-left-footer {
+    margin-top: 64px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ─── Right Panel ─────────────────────────────────────────────── */
+.auth-right {
+    flex: 1;
+    background-color: #111111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    position: relative;
+}
+
+.auth-form-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ─── Form Header ─────────────────────────────────────────────── */
+.auth-form-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 26px;
+    font-weight: 700;
+    color: #F0EDE8;
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+
+.auth-form-subtitle {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 32px;
+}
+
+/* ─── Form Fields ─────────────────────────────────────────────── */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #8A8A8A;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.auth-input,
+.auth-select {
+    background: #1E1E1E;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    color: #F0EDE8;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 13px 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.auth-input::placeholder {
+    color: #444;
+}
+
+.auth-input:focus,
+.auth-select:focus {
+    border-color: #B8860B;
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.12);
+}
+
+.auth-select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+.auth-select option {
+    background: #1E1E1E;
+    color: #F0EDE8;
+}
+
+/* Password wrapper */
+.auth-input-password-wrap {
+    position: relative;
+}
+
+.auth-input-password-wrap .auth-input {
+    padding-right: 44px;
+}
+
+.auth-toggle-pw {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.auth-toggle-pw:hover {
+    color: #B8860B;
+}
+
+/* ─── Row: Remember + Forgot ─────────────────────────────────── */
+.auth-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -4px;
+}
+
+.auth-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #888;
+}
+
+.auth-remember input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #B8860B;
+    cursor: pointer;
+}
+
+.auth-forgot {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #B8860B;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.auth-forgot:hover {
+    color: #D4A017;
+    text-decoration: underline;
+}
+
+/* ─── Submit Button ─────────────────────────────────────────── */
+.auth-btn {
+    background: #B8860B;
+    color: #111;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 4px;
+    transition: background 0.2s ease, transform 0.1s ease;
+    letter-spacing: 0.3px;
+}
+
+.auth-btn:hover:not(:disabled) {
+    background: #C8961C;
+}
+
+.auth-btn:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+.auth-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.auth-btn-secondary {
+    background: transparent;
+    border: 1px solid #333;
+    color: #888;
+    border-radius: 6px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    padding: 11px;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.auth-btn-secondary:hover {
+    border-color: #B8860B;
+    color: #B8860B;
+}
+
+/* ─── Switch Link ─────────────────────────────────────────────── */
+.auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #666;
+}
+
+.auth-switch a,
+.auth-switch button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #B8860B;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    text-decoration: none;
+    margin-left: 4px;
+    transition: color 0.2s;
+}
+
+.auth-switch a:hover,
+.auth-switch button:hover {
+    color: #D4A017;
+    text-decoration: underline;
+}
+
+/* ─── Access Info Block ──────────────────────────────────────── */
+.auth-info {
+    margin-top: 28px;
+    padding: 16px 18px;
+    background: #161616;
+    border-radius: 6px;
+    border-left: 2px solid #2A2A2A;
+}
+
+.auth-info p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.auth-info p:first-child {
+    color: #666;
+    margin-bottom: 6px;
+}
+
+/* ─── OTP Input ─────────────────────────────────────────────── */
+.auth-otp-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 8px 0;
+}
+
+.auth-otp-box {
+    width: 48px;
+    height: 56px;
+    text-align: center;
+    background: #1E1E1E;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    color: #F0EDE8;
+    font-family: 'Courier Prime', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-otp-box:focus {
+    border-color: #B8860B;
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.12);
+}
+
+/* ─── Alert / Toast ──────────────────────────────────────────── */
+.auth-alert {
+    padding: 11px 14px;
+    border-radius: 6px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.auth-alert-error {
+    background: rgba(192, 57, 43, 0.12);
+    border: 1px solid rgba(192, 57, 43, 0.3);
+    color: #E74C3C;
+}
+
+.auth-alert-success {
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.25);
+    color: #27AE60;
+}
+
+/* ─── Spinner ─────────────────────────────────────────────────── */
+.auth-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(17, 17, 17, 0.3);
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .auth-left {
+        display: none;
+    }
+
+    .auth-right {
+        padding: 32px 24px;
+    }
+
+    .auth-form-wrapper {
+        max-width: 100%;
+    }
+}
