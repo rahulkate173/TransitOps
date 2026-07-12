@@ -18,19 +18,30 @@
 </p>
 
 ---
+## IMP Note 
+### > Since we had used smtp for mail based otp and as ***render*** is not allowing smpt so test login mail and password is provided 👇
+
+```
+(1) . Owner :
+  mail : studysid062007@gmail.com
+  password : abc@123
+(2) . Dispatcher :
+  mail : gamersid050607@gmail.com
+  password : abc@123
+```
 
 ## 🎬 Demo
 
 <!-- 👇 ADD YOUR VIDEO LINK BELOW 👇 -->
 
 > **📹 Video Walkthrough:**  
-> _Paste your video link here_ → `[ YOUR VIDEO LINK ]`
+> _Paste your video link here_ → `[https://drive.google.com/drive/folders/1da2oAYLAlNtXbW3PgoFiNhY7fukKvtb3]`
 
 <!-- Example formats:
 [![Demo Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
 Or for Loom/other:
-🔗 [Watch the demo](YOUR_LINK_HERE)
+🔗 [Watch the demo](https://drive.google.com/drive/folders/1da2oAYLAlNtXbW3PgoFiNhY7fukKvtb3)
 -->
 
 ---
