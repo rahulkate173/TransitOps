@@ -1,0 +1,98 @@
+/* ═══════════════════════════════════════════════════════
+   TransitOps — Drivers Module Styles
+   Extends vehicle.css base; only driver-specific rules here
+═══════════════════════════════════════════════════════ */
+
+/* ─── Driver Status Badges ──────────────────────────── */
+.status-badge.Available  { background: #1A4731; color: #2ECC71; }
+.status-badge.On-Trip    { background: #1A3050; color: #5DADE2; }
+.status-badge.Off-Duty   { background: #2A2A1A; color: #F1C40F; }
+.status-badge.Suspended  { background: #3D1515; color: #E74C3C; }
+
+/* ─── Safety Score Bar ──────────────────────────────── */
+.safety-score-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.safety-score-bar {
+    width: 60px;
+    height: 5px;
+    background: #2A2A2A;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.safety-score-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.safety-score-fill.high   { background: #2ECC71; }
+.safety-score-fill.medium { background: #F39C12; }
+.safety-score-fill.low    { background: #E74C3C; }
+
+.safety-score-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #C8C4BE;
+    min-width: 32px;
+}
+
+/* ─── Expiry Badge ──────────────────────────────────── */
+.expiry-expired {
+    color: #E74C3C;
+    font-weight: 700;
+}
+
+.expiry-warning {
+    color: #F39C12;
+}
+
+.expiry-ok {
+    color: #C8C4BE;
+}
+
+/* ─── Toggle Status Filter Buttons ─────────────────── */
+.driver-filter-section {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.driver-filter-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.driver-toggle-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.driver-toggle-btn {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.driver-toggle-btn:not(.active) { opacity: 0.4; }
+.driver-toggle-btn.active       { opacity: 1; }
+
+.driver-toggle-btn.Available { background: #1A4731; color: #2ECC71; }
+.driver-toggle-btn.On-Trip   { background: #1A3050; color: #5DADE2; }
+.driver-toggle-btn.Off-Duty  { background: #2A2A1A; color: #F1C40F; }
+.driver-toggle-btn.Suspended { background: #3D1515; color: #E74C3C; }

@@ -1,0 +1,466 @@
+/* ═══════════════════════════════════════════════════════
+   TransitOps — Vehicle Registry Styles
+   Palette matches auth:
+     --gold:     #B8860B
+     --bg:       #111111
+     --surface:  #1A1A1A
+     --border:   #2A2A2A
+     --text:     #F0EDE8
+     --muted:    #666666
+═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap');
+
+/* ─── App Shell ─────────────────────────────────────── */
+.app-shell {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background: #111111;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* ─── Sidebar ───────────────────────────────────────── */
+.sidebar {
+    width: 160px;
+    min-width: 160px;
+    background: #161616;
+    border-right: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+}
+
+.sidebar-brand {
+    font-family: 'Courier Prime', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #F0EDE8;
+    padding: 0 20px 28px;
+    border-bottom: 1px solid #222;
+    letter-spacing: -0.3px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 10px;
+    flex: 1;
+}
+
+.nav-item {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #666;
+    padding: 9px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+    text-decoration: none;
+    display: block;
+}
+
+.nav-item:hover {
+    color: #B8860B;
+    background: rgba(184, 134, 11, 0.08);
+}
+
+.nav-item.active {
+    color: #B8860B;
+    background: rgba(184, 134, 11, 0.12);
+}
+
+/* ─── Main Area ─────────────────────────────────────── */
+.main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ─── Top Bar ───────────────────────────────────────── */
+.topbar {
+    height: 52px;
+    background: #161616;
+    border-bottom: 1px solid #222;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.topbar-search {
+    flex: 1;
+    max-width: 280px;
+    background: #1E1E1E;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    color: #F0EDE8;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    padding: 7px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.topbar-search::placeholder { color: #444; }
+.topbar-search:focus { border-color: #B8860B; }
+
+.topbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.topbar-user {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #888;
+}
+
+.topbar-role-badge {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #111;
+    background: #B8860B;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.4px;
+}
+
+/* ─── Page Content ──────────────────────────────────── */
+.page-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+/* ─── Toolbar ───────────────────────────────────────── */
+.vr-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.vr-select {
+    background: #1A1A1A;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    color: #F0EDE8;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    padding: 8px 32px 8px 12px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    transition: border-color 0.2s;
+}
+
+.vr-select:focus { border-color: #B8860B; }
+.vr-select option { background: #1A1A1A; }
+
+.vr-search-reg {
+    background: #1A1A1A;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    color: #F0EDE8;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    padding: 8px 14px;
+    outline: none;
+    width: 200px;
+    transition: border-color 0.2s;
+}
+
+.vr-search-reg::placeholder { color: #444; }
+.vr-search-reg:focus { border-color: #B8860B; }
+
+.vr-add-btn {
+    margin-left: auto;
+    background: #B8860B;
+    color: #111;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.vr-add-btn:hover { background: #C8961C; }
+.vr-add-btn:active { transform: scale(0.98); }
+
+/* ─── Table ─────────────────────────────────────────── */
+.vr-table-wrap {
+    border: 1px solid #222;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.vr-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.vr-table thead tr {
+    background: #161616;
+    border-bottom: 1px solid #222;
+}
+
+.vr-table th {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.vr-table tbody tr {
+    border-bottom: 1px solid #1E1E1E;
+    transition: background 0.15s;
+}
+
+.vr-table tbody tr:last-child { border-bottom: none; }
+.vr-table tbody tr:hover { background: #181818; }
+
+.vr-table td {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #C8C4BE;
+    padding: 13px 16px;
+    white-space: nowrap;
+}
+
+.vr-table td.reg-no {
+    color: #F0EDE8;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* ─── Status Badges ─────────────────────────────────── */
+.status-badge {
+    display: inline-block;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+}
+
+.status-badge.Available  { background: #1A4731; color: #2ECC71; }
+.status-badge.On-Trip    { background: #1A3050; color: #5DADE2; }
+.status-badge.In-Shop    { background: #4A2A00; color: #E67E22; }
+.status-badge.Retired    { background: #3D1515; color: #E74C3C; }
+
+/* ─── Actions ───────────────────────────────────────── */
+.vr-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.vr-icon-btn {
+    background: none;
+    border: 1px solid #2A2A2A;
+    border-radius: 5px;
+    color: #666;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.vr-icon-btn:hover { color: #B8860B; border-color: #B8860B; }
+.vr-icon-btn.danger:hover { color: #E74C3C; border-color: #E74C3C; }
+
+/* ─── Rule Note ─────────────────────────────────────── */
+.vr-rule-note {
+    margin-top: 14px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: #B8860B;
+}
+
+/* ─── Empty / Loading ───────────────────────────────── */
+.vr-empty {
+    text-align: center;
+    padding: 48px;
+    color: #444;
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+}
+
+/* ─── Modal Overlay ─────────────────────────────────── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(2px);
+}
+
+.modal-box {
+    background: #1A1A1A;
+    border: 1px solid #2A2A2A;
+    border-radius: 10px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #F0EDE8;
+    margin-bottom: 22px;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modal-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.modal-input,
+.modal-select {
+    background: #111;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    color: #F0EDE8;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 10px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.modal-input:focus,
+.modal-select:focus { border-color: #B8860B; }
+.modal-input::placeholder { color: #444; }
+
+.modal-select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+}
+
+.modal-select option { background: #1A1A1A; }
+
+.modal-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+    justify-content: flex-end;
+}
+
+.modal-btn-cancel {
+    background: none;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #888;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.modal-btn-cancel:hover { border-color: #555; color: #aaa; }
+
+.modal-btn-submit {
+    background: #B8860B;
+    border: none;
+    border-radius: 6px;
+    color: #111;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-btn-submit:hover:not(:disabled) { background: #C8961C; }
+.modal-btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ─── Alert in modal ────────────────────────────────── */
+.modal-alert-error {
+    background: rgba(192, 57, 43, 0.12);
+    border: 1px solid rgba(192, 57, 43, 0.3);
+    color: #E74C3C;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+}
+
+/* ─── Spinner ───────────────────────────────────────── */
+.spinner-sm {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(17,17,17,0.3);
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #B8860B; }
