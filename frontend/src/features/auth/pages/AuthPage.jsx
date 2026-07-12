@@ -8,7 +8,7 @@ import OtpForm from "../components/OtpForm";
 import "../styles/auth.css";
 
 const AuthPage = () => {
-    const { isAuthenticated, stage, user } = useAuth();
+    const { isAuthenticated, stage, user, registeredEmail: reduxEmail } = useAuth();
     const navigate = useNavigate();
     const [view, setView] = useState("login"); // 'login' | 'register'
     const [registeredEmail, setRegisteredEmail] = useState("");
@@ -26,7 +26,7 @@ const AuthPage = () => {
                 <AuthLeft />
                 <div className="auth-right">
                     <div className="auth-form-wrapper">
-                        <OtpForm email={registeredEmail} />
+                        <OtpForm email={reduxEmail || registeredEmail} />
                     </div>
                 </div>
             </div>

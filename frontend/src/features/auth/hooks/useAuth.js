@@ -13,6 +13,7 @@ import {
     selectAuthError,
     selectAuthStage,
     selectAuthSuccess,
+    selectRegisteredEmail,
 } from "../auth.slice";
 
 export function useAuth() {
@@ -24,6 +25,7 @@ export function useAuth() {
     const error = useSelector(selectAuthError);
     const stage = useSelector(selectAuthStage);
     const successMessage = useSelector(selectAuthSuccess);
+    const registeredEmail = useSelector(selectRegisteredEmail);
 
     return {
         // state
@@ -33,6 +35,7 @@ export function useAuth() {
         error,
         stage,
         successMessage,
+        registeredEmail,
 
         // actions
         register: (data) => dispatch(registerUser(data)),

@@ -7,6 +7,9 @@ import driverRouter from './routes/driver.routes.js';
 import tripRouter from './routes/trip.routes.js';
 import maintainenceRouter from './routes/maintainence.routes.js';
 import expenseRouter from './routes/expense.routes.js';
+import dashboardRouter from './routes/dashboard.routes.js';
+import analyticsRouter from './routes/analytics.routes.js';
+import settingsRouter from './routes/settings.routes.js';
 import cookieParser from 'cookie-parser';
 
 const app = express();
@@ -27,6 +30,9 @@ app.use("/api/drivers", driverRouter);
 app.use("/api/trips", tripRouter);
 app.use("/api/maintenance", maintainenceRouter);
 app.use("/api/expenses", expenseRouter);
+app.use("/api/dashboard", dashboardRouter);
+app.use("/api/analytics", analyticsRouter);
+app.use("/api/settings", settingsRouter);
 
 
 export default app;

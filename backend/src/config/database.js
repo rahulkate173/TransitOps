@@ -1,18 +1,19 @@
 import mongoose from "mongoose";
-import config from "./config.js";
+import { seedDefaultPermissions } from "../services/permission.service.js";
 
-
-async function connectDB() {
+const connectDB = async () => {
     try {
-        await mongoose.connect(config.MONGO_URI, {
-            tls: true,
-            tlsAllowInvalidCertificates: false,
-        });
-        console.log("Connected to DB");
+        await mongoose.connect(process.env.MONGO_URI);
+
+        console.log("MongoDB Connected");
+
+        // Seed default RBAC permissions on every startup (upsert — safe to repeat)
+        await seedDefaultPermissions();
+
     } catch (err) {
-        console.error("DB connection failed:", err.message);
+        console.error(err);
         process.exit(1);
     }
-}
+};
 
 export default connectDB;

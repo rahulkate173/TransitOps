@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import AlertBox from "./AlertBox";
 
-const ROLES = ["Fleet Manager", "Dispatcher", "Safety Officer", "Financial Analyst"];
 
 const LoginForm = ({ onSwitchToRegister }) => {
     const { login, loading, error, clearError } = useAuth();
@@ -10,7 +9,6 @@ const LoginForm = ({ onSwitchToRegister }) => {
     const [form, setForm] = useState({
         email: "",
         password: "",
-        role: "",
     });
     const [showPw, setShowPw] = useState(false);
     const [remember, setRemember] = useState(false);
@@ -84,22 +82,6 @@ const LoginForm = ({ onSwitchToRegister }) => {
                     </div>
                 </div>
 
-                {/* Role */}
-                <div className="auth-field">
-                    <label className="auth-label" htmlFor="login-role">Role (RBAC)</label>
-                    <select
-                        id="login-role"
-                        className="auth-select"
-                        name="role"
-                        value={form.role}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select your role</option>
-                        {ROLES.map((r) => (
-                            <option key={r} value={r}>{r}</option>
-                        ))}
-                    </select>
-                </div>
 
                 {/* Remember + Forgot */}
                 <div className="auth-row">
@@ -125,14 +107,6 @@ const LoginForm = ({ onSwitchToRegister }) => {
                 </button>
             </form>
 
-            {/* Access scope info */}
-            <div className="auth-info">
-                <p>Access is scoped by role after login:</p>
-                <p>• Fleet Manager → Fleet, Maintenance</p>
-                <p>• Dispatcher → Dashboard, Trips</p>
-                <p>• Safety Officer → Drivers, Compliance</p>
-                <p>• Financial Analyst → Fuel &amp; Expenses, Analytics</p>
-            </div>
 
             {/* Switch to Register */}
             <div className="auth-switch">

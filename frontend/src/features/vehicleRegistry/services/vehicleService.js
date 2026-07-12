@@ -1,15 +1,13 @@
-import axios from "axios";
+import apiClient from "../../../apiClient";
 
-const api = axios.create({
-    baseURL: "/api/vehicles",
-    withCredentials: true,
-});
+const api = apiClient;
+const BASE = "/api/vehicles";
 
 export const vehicleService = {
-    getAll: (params) => api.get("/", { params }),
-    getById: (id) => api.get(`/${id}`),
-    add: (data) => api.post("/", data),
-    update: (id, data) => api.put(`/${id}`, data),
-    updateStatus: (id, status) => api.patch(`/${id}/status`, { status }),
-    retire: (id) => api.delete(`/${id}`),
+    getAll:       (params)       => api.get(`${BASE}/`,          { params }),
+    getById:      (id)           => api.get(`${BASE}/${id}`),
+    add:          (data)         => api.post(`${BASE}/`,          data),
+    update:       (id, data)     => api.put(`${BASE}/${id}`,      data),
+    updateStatus: (id, status)   => api.patch(`${BASE}/${id}/status`, { status }),
+    retire:       (id)           => api.delete(`${BASE}/${id}`),
 };

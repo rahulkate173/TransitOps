@@ -1,0 +1,253 @@
+/* ═══════════════════════════════════════════════════════
+   TransitOps — Maintenance Page Styles
+   Palette matches auth / vehicle / trips exactly
+═══════════════════════════════════════════════════════ */
+
+.maint-layout {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #111111;
+}
+
+/* ─── Left Panel: LOG SERVICE RECORD ─────────────────── */
+.maint-left {
+    width: 420px;
+    min-width: 380px;
+    border-right: 1px solid #1E1E1E;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background: #111111;
+}
+
+.maint-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #1E1E1E;
+    background: #141414;
+}
+
+.maint-panel-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #B8860B;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.maint-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.maint-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.maint-field label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.maint-input,
+.maint-select,
+.maint-textarea {
+    background: #1A1A1A;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #F0EDE8;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.maint-input:focus,
+.maint-select:focus,
+.maint-textarea:focus {
+    border-color: #B8860B;
+    box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.15);
+}
+
+.maint-submit-btn {
+    margin-top: 8px;
+    background: #B8860B;
+    color: #111111;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.maint-submit-btn:hover:not(:disabled) {
+    background: #D4AF37;
+    transform: translateY(-1px);
+}
+
+.maint-submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ─── Right Panel: SERVICE LOG ───────────────────────── */
+.maint-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #111111;
+}
+
+.maint-tabs {
+    display: flex;
+    border-bottom: 1px solid #1E1E1E;
+    padding: 0 20px;
+    background: #141414;
+}
+
+.maint-tab {
+    position: relative;
+    padding: 14px 14px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.maint-tab.active {
+    color: #F0EDE8;
+}
+
+.maint-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 2px;
+    background: #B8860B;
+}
+
+.maint-table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.maint-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+}
+
+.maint-table th {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #222;
+}
+
+.maint-table td {
+    padding: 16px 14px;
+    font-size: 14px;
+    color: #E0DDD8;
+    border-bottom: 1px solid #1A1A1A;
+}
+
+.maint-table tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Status badges */
+.maint-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.maint-badge-pending {
+    background: rgba(230, 126, 34, 0.15);
+    color: #E67E22;
+    border: 1px solid rgba(230, 126, 34, 0.3);
+}
+
+.maint-badge-completed {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ECC71;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.maint-badge-cancelled {
+    background: rgba(231, 76, 60, 0.15);
+    color: #E74C3C;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.maint-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.maint-action-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-complete {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ECC71;
+}
+
+.btn-complete:hover {
+    background: rgba(46, 204, 113, 0.3);
+}
+
+.btn-cancel {
+    background: rgba(231, 76, 60, 0.2);
+    color: #E74C3C;
+}
+
+.btn-cancel:hover {
+    background: rgba(231, 76, 60, 0.3);
+}

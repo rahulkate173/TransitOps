@@ -28,11 +28,21 @@ export async function createTrip(req, res) {
             plannedDistance,
             startOdometer: vehicleDoc.odometer,
             createdBy: req.user?._id,
-            status: "Draft",
+            status: "Dispatched",
+            dispatchTime: new Date(),
         });
 
+        // Mark vehicle and driver as On Trip immediately
+        vehicleDoc.status = "On Trip";
+        vehicleDoc.currentDriver = driverDoc._id;
+        await vehicleDoc.save();
+
+        driverDoc.status = "On Trip";
+        driverDoc.currentVehicle = vehicleDoc._id;
+        await driverDoc.save();
+
         return res.status(201).json({
-            message: "Trip created successfully",
+            message: "Trip created and dispatched successfully",
             trip,
         });
 
@@ -64,7 +74,8 @@ export async function getAllTrips(req, res) {
         });
 
     } catch (err) {
-        return res.status(500).json({ message: "Internal server error" });
+        console.error("Error in getAllTrips:", err);
+        return res.status(500).json({ message: "Internal server error", error: err.message });
     }
 }
 

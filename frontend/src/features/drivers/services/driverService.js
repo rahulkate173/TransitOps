@@ -1,17 +1,14 @@
-import axios from "axios";
+import apiClient from "../../../apiClient";
 
-const api = axios.create({
-    baseURL: "/api/drivers",
-    withCredentials: true,
-});
+const BASE = "/api/drivers";
 
 export const driverService = {
-    getAll: (params) => api.get("/", { params }),
-    getById: (id) => api.get(`/${id}`),
-    getAvailable: () => api.get("/available"),
-    add: (data) => api.post("/", data),
-    update: (id, data) => api.put(`/${id}`, data),
-    suspend: (id) => api.patch(`/${id}/suspend`),
-    activate: (id) => api.patch(`/${id}/activate`),
-    updateSafetyScore: (id, safetyScore) => api.patch(`/${id}/safety-score`, { safetyScore }),
+    getAll:           (params)        => apiClient.get(`${BASE}/`,                  { params }),
+    getById:          (id)            => apiClient.get(`${BASE}/${id}`),
+    getAvailable:     ()              => apiClient.get(`${BASE}/available`),
+    add:              (data)          => apiClient.post(`${BASE}/`,                  data),
+    update:           (id, data)      => apiClient.put(`${BASE}/${id}`,              data),
+    suspend:          (id)            => apiClient.patch(`${BASE}/${id}/suspend`),
+    activate:         (id)            => apiClient.patch(`${BASE}/${id}/activate`),
+    updateSafetyScore:(id, safetyScore) => apiClient.patch(`${BASE}/${id}/safety-score`, { safetyScore }),
 };

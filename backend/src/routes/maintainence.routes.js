@@ -1,37 +1,18 @@
 import { Router } from "express";
 import {
-    createMaintenance,
-    getAllMaintenance,
-    getMaintenanceById,
-    updateMaintenance,
-    completeMaintenance,
-    cancelMaintenance
+    createMaintenance, getAllMaintenance, getMaintenanceById,
+    updateMaintenance, completeMaintenance, cancelMaintenance,
 } from "../controllers/maintainence.controller.js";
+import { verifyToken } from "../middleware/verifyToken.js";
+import authorizePermission from "../middleware/authorizePermission.js";
 
 const maintenanceRouter = Router();
 
-
-// POST /api/maintenance
-maintenanceRouter.post("/", createMaintenance);
-
-
-// GET /api/maintenance
-maintenanceRouter.get("/", getAllMaintenance);
-
-
-// GET /api/maintenance/:id
-maintenanceRouter.get("/:id", getMaintenanceById);
-
-
-// PUT /api/maintenance/:id
-maintenanceRouter.put("/:id", updateMaintenance);
-
-
-// PATCH /api/maintenance/:id/complete
-maintenanceRouter.patch("/:id/complete", completeMaintenance);
-
-
-// PATCH /api/maintenance/:id/cancel
-maintenanceRouter.patch("/:id/cancel", cancelMaintenance);
+maintenanceRouter.post("/",             verifyToken, authorizePermission("Maintenance", "create"), createMaintenance);
+maintenanceRouter.get("/",              verifyToken, authorizePermission("Maintenance", "view"),   getAllMaintenance);
+maintenanceRouter.get("/:id",           verifyToken, authorizePermission("Maintenance", "view"),   getMaintenanceById);
+maintenanceRouter.put("/:id",           verifyToken, authorizePermission("Maintenance", "update"), updateMaintenance);
+maintenanceRouter.patch("/:id/complete", verifyToken, authorizePermission("Maintenance", "update"), completeMaintenance);
+maintenanceRouter.patch("/:id/cancel",   verifyToken, authorizePermission("Maintenance", "delete"), cancelMaintenance);
 
 export default maintenanceRouter;

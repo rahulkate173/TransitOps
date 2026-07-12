@@ -45,9 +45,13 @@ export async function register(req, res) {
     const otp = generateOtp();
     const html = getOtpHtml(otp);
 
+    console.log("=========================================");
+    console.log(`[OTP GENERATED] Email: ${email} | OTP: ${otp}`);
+    console.log("=========================================");
+
     const otpHash = crypto.createHash("sha256").update(otp).digest("hex");
     await otpModel.create({
-        email,
+        email: email.trim().toLowerCase(),
         user: user._id,
         otpHash
     })
@@ -285,19 +289,33 @@ export async function logoutAll(req, res) {
 
 
 export async function verifyEmail(req, res) {
-    const { otp, email } = req.body
+    const otp = req.body?.otp ?? req.query?.otp;
+    const email = req.body?.email ?? req.query?.email;
 
-    const otpHash = crypto.createHash("sha256").update(otp).digest("hex");
+    if (!otp) {
+        return res.status(400).json({ message: "OTP is required" });
+    }
 
-    const otpDoc = await otpModel.findOne({
-        email,
-        otpHash
-    })
+    const cleanOtp = String(otp).trim();
+    const otpHash = crypto.createHash("sha256").update(cleanOtp).digest("hex");
+
+    let otpDoc = null;
+    if (email) {
+        otpDoc = await otpModel.findOne({
+            email: new RegExp(`^${email.trim()}$`, "i"),
+            otpHash
+        });
+    }
+
+    // Fallback: if email casing/string mismatched or email wasn't passed, find by otpHash directly
+    if (!otpDoc) {
+        otpDoc = await otpModel.findOne({ otpHash });
+    }
 
     if (!otpDoc) {
         return res.status(400).json({
             message: "Invalid OTP"
-        })
+        });
     }
 
     const user = await userModel.findByIdAndUpdate(otpDoc.user, {

@@ -59,6 +59,7 @@ const initialState = {
     loading: false,
     error: null,
     successMessage: null,
+    registeredEmail: null,
     // stages: 'idle' | 'otp-pending' | 'verified'
     stage: "idle",
 };
@@ -84,6 +85,7 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.stage = "otp-pending";
                 state.successMessage = action.payload.message;
+                state.registeredEmail = action.payload?.user?.email || action.meta.arg.email;
             })
             .addCase(registerUser.rejected, (state, action) => {
                 state.loading = false;
@@ -145,5 +147,6 @@ export const selectAuthLoading = (state) => state.auth.loading;
 export const selectAuthError = (state) => state.auth.error;
 export const selectAuthStage = (state) => state.auth.stage;
 export const selectAuthSuccess = (state) => state.auth.successMessage;
+export const selectRegisteredEmail = (state) => state.auth.registeredEmail;
 
 export default authSlice.reducer;

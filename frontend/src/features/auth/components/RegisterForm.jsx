@@ -4,7 +4,7 @@ import AlertBox from "./AlertBox";
 
 const ROLES = ["Fleet Manager", "Dispatcher", "Safety Officer", "Financial Analyst"];
 
-const RegisterForm = ({ onSwitchToLogin }) => {
+const RegisterForm = ({ onSwitchToLogin, onRegisterSuccess }) => {
     const { register, loading, error, successMessage, clearError } = useAuth();
 
     const [form, setForm] = useState({
@@ -22,7 +22,10 @@ const RegisterForm = ({ onSwitchToLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await register(form);
+        const res = await register(form);
+        if (!res?.error) {
+            onRegisterSuccess?.(form.email);
+        }
     };
 
     return (
