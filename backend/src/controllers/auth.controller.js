@@ -56,9 +56,13 @@ export async function register(req, res) {
         otpHash
     })
 
-    await sendEmail(email, "OTP Verification", `Your OTP code is ${otp}`, html)
+    try {
+        await sendEmail(email, "OTP Verification", `Your OTP code is ${otp}`, html);
+    } catch (emailError) {
+        console.error("[SMTP Warning] Could not send OTP email via SMTP:", emailError.message);
+    }
 
-    res.status(201).json({
+    return res.status(201).json({
         message: "User registered successfully",
         user: {
             username: user.username,
@@ -66,7 +70,7 @@ export async function register(req, res) {
             role: user.role,
             verified: user.verified
         },
-    })
+    });
 
 
 }
