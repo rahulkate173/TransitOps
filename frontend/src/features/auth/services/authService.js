@@ -1,20 +1,15 @@
-import axios from "axios";
+import apiClient from "../../../apiClient";
 
 const BASE = "/api/auth";
 
-const api = axios.create({
-    baseURL: BASE,
-    withCredentials: true, // send cookies (refreshToken)
-});
-
 export const authService = {
-    register: (data) => api.post("/register", data),
-    login: (data) => api.post("/login", data),
-    verifyEmail: (data) => api.post("/verify-email", data),
+    register: (data) => apiClient.post(`${BASE}/register`, data),
+    login: (data) => apiClient.post(`${BASE}/login`, data),
+    verifyEmail: (data) => apiClient.post(`${BASE}/verify-email`, data),
     getMe: (token) =>
-        api.get("/me", {
+        apiClient.get(`${BASE}/me`, {
             headers: { Authorization: `Bearer ${token}` },
         }),
-    refreshToken: () => api.post("/refresh-token"),
-    logout: () => api.post("/logout"),
+    refreshToken: () => apiClient.post(`${BASE}/refresh-token`),
+    logout: () => apiClient.post(`${BASE}/logout`),
 };

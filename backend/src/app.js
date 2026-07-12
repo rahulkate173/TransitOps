@@ -12,11 +12,21 @@ import analyticsRouter from './routes/analytics.routes.js';
 import settingsRouter from './routes/settings.routes.js';
 import cookieParser from 'cookie-parser';
 
-const app = express();
+const allowedOrigins = [
+    'https://transit-ops-liart.vercel.app',
+    'http://localhost:5173',
+    process.env.CLIENT_URL,
+].filter(Boolean);
 
 app.use(cors({
-    origin: 'http://localhost:5173', 
-    credentials: true,              
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+            return callback(null, true);
+        }
+        return callback(null, false);
+    },
+    credentials: true,
 }));
 
 app.use(express.json());

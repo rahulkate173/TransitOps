@@ -9,6 +9,7 @@ import axios from "axios";
 import { store } from "./store";
 
 const apiClient = axios.create({
+    baseURL: import.meta.env.VITE_API_URL || "https://transitops-backend-mmd9.onrender.com",
     withCredentials: true, // still send cookies (refresh token)
 });
 
