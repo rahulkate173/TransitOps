@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
+import LandingPage from "./features/auth/pages/LandingPage";
 import AuthPage from "./features/auth/pages/AuthPage";
 import VehicleRegistry from "./features/vehicleRegistry/pages/VehicleRegistry";
 import DriversPage from "./features/drivers/pages/DriversPage";
@@ -25,6 +26,9 @@ const AppShell = ({ children }) => {
 const App = () => {
     return (
         <Routes>
+            {/* Landing Page */}
+            <Route path="/" element={<LandingPage />} />
+
             {/* Auth */}
             <Route path="/auth" element={<AuthPage />} />
 
@@ -56,9 +60,8 @@ const App = () => {
                 </AppShell>
             } />
 
-            {/* Default */}
-            <Route path="/" element={<Navigate to="/auth" replace />} />
-            <Route path="*" element={<Navigate to="/fleet" replace />} />
+            {/* Catch-all */}
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );
 };

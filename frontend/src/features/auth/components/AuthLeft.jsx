@@ -1,15 +1,30 @@
+import { useNavigate } from "react-router-dom";
+
 // Left decorative panel with logo, roles list, and footer
 const AuthLeft = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="auth-left">
             {/* Logo */}
             <div className="auth-logo">
-                <div className="auth-logo-icon">
+                <div
+                    className="auth-logo-icon"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => navigate("/")}
+                    title="Back to home"
+                >
                     {Array.from({ length: 16 }).map((_, i) => (
                         <span key={i} />
                     ))}
                 </div>
-                <div className="auth-logo-title">TransitOps</div>
+                <div
+                    className="auth-logo-title"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => navigate("/")}
+                >
+                    TransitOps
+                </div>
                 <div className="auth-logo-subtitle">Smart Transport Operations Platform</div>
             </div>
 
